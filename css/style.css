@@ -122,6 +122,8 @@ body {
   display: block;
   padding-top: 32px;
   padding-bottom: 31px;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-menu {
@@ -152,6 +154,23 @@ body {
 .contacts-menu .contact {
   color: var(--navyblue);
   font-weight: 400;
+}
+
+.current {
+  position: relative;
+  color: var(--oceancolor);
+}
+
+.current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  height: 6px;
+  border-radius: 4px;
+  border: 2px solid var(--oceancolor);
+  background-color: var(--oceancolor);
 }
 
 .hero {
@@ -190,6 +209,10 @@ body {
   line-height: 1.62;
   color: var(--iriscolor);
   background-color: var(--cloud);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button.primary:hover,
@@ -211,6 +234,10 @@ body {
   padding: 10px 32px;
   border-radius: 4px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .benefits {
@@ -363,6 +390,8 @@ body {
 
   color: var(--whitecolor);
   background-color: var(--iriscolor);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-team .link:hover,
@@ -391,6 +420,9 @@ body {
   border: 1px solid var(--lightslate);
   color: var(--lightslate);
   background-color: var(--whitecolor);
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .partners .link {
@@ -486,6 +518,8 @@ body {
 
   color: var(--whitecolor);
   background-color: var(--iriscolor);
+
+  transition: backgorund-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-footer .link:hover,
@@ -543,10 +577,101 @@ body {
   flex-basis: calc(100% / 3 - 30px);
   margin-left: 30px;
   margin-top: 30px;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .project-card:hover,
 .project-card:focus {
   box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
     0px 1px 1px 0px rgba(46, 47, 66, 0.16),
     0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+}
+
+.project-cover-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-cover-text {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+  font-size: 16px;
+  line-height: 1.8;
+  letter-spacing: 0.32px;
+  font-family: "Roboto";
+  font-style: normal;
+  color: var(--cloud);
+  background-color: var(--iriscolor);
+  transform: translateY(100%);
+  transition: transform 250ms ease-in-out;
+}
+
+.project-card:hover .project-cover-text {
+  transform: translateY(0);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 408px;
+  min-height: 584px;
+  background-color: var(--whitecolor);
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+
+  background-color: var(--whitecolor);
+  color: var(--blackcolor);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  cursor: pointer;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-icon {
+  fill: currentColor;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  background-color: var(--oceancolor);
+  color: var(--whitecolor);
+}
+
+.is-hidden {
+  visibility: none;
+  opacity: 0;
+  pointer-events: none;
 }
